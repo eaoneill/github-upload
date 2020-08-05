@@ -1,0 +1,118 @@
+Participants
+Code in R:
+
+setwd("/Users/meagano/Desktop")
+eodata<-read.csv("elizabeth.csv")
+
+summary(lm(eodata$Fail. ~ eodata$age))
+
+summary(lm(eodata$Fail. ~ eodata$area.1))
+
+summary(lm(eodata$Fail. ~ eodata$years))
+
+summary(lm(eodata$Fail. ~ eodata$body.))
+
+summary(lm(eodata$Fail. ~ eodata$own.rent.equipment))
+
+summary(lm(eodata$Fail. ~ eodata$Part))
+
+summary(lm(eodata$barriers..equip. ~ eodata$age))
+
+summary(lm(eodata$barriers..equip. ~ eodata$area.1))
+
+summary(lm(eodata$barriers..equip. ~ eodata$years))
+
+summary(lm(eodata$barriers..equip. ~ eodata$body.))
+
+summary(lm(eodata$barriers..equip. ~ eodata$own.rent.equipment))
+
+summary(lm(eodata$barriers..equip. ~ eodata$Part))
+
+
+participants, there is no predictor variable that significantly predicts whether or not the equipment fails
+
+summary(lm(eodata$Fail. ~ eodata$age))
+age does not predict (R2 = .04, p = .3787)
+
+summary(lm(eodata$Fail. ~ eodata$area.1))
+made area into regions: does not predict (R2 = .1427, p = .4685)
+
+summary(lm(eodata$Fail. ~ eodata$years))
+years does not predict (R2 = .06, p = .2863)
+
+summary(lm(eodata$Fail. ~ eodata$body.))
+whether or not the injury being of the body (I guessed on some) did not predict (R2 = .02, p = .6051)
+
+summary(lm(eodata$Fail. ~ eodata$own.rent.equipment))
+whether they own or rent did not predict (R2 = .03, p = .4401)
+
+summary(lm(eodata$Fail. ~ eodata$Part))
+coded participation in sport, did not predict (R2 = .02, p = .5449)
+
+ coded your barriers (equipment v not equipment)
+summary(lm(eodata$barriers..equip. ~ eodata$age))
+age did not predict (R2 = .01, p = .6681)
+
+Area actually did predict!!
+summary(lm(eodata$barriers..equip. ~ eodata$area.1))
+Regression equation: 1 - .33846 *east - 1 *mid - 1 * west  = predicted barriers being equipment based (R2 = .2692, p = .04612)
+west and mid significantly lower 
+Therefore, people in the east are more likely to have barriers due to the equipment!
+
+summary(lm(eodata$barriers..equip. ~ eodata$years))
+year did not predict (R2 = .02, p = .5735)
+
+summary(lm(eodata$barriers..equip. ~ eodata$body.))
+Body v mind injury did not predict (R2 = .04, p = .388)
+
+summary(lm(eodata$barriers..equip. ~ eodata$own.rent.equipment))
+own v rent did not predict (R2 = .02, p = .556)
+
+summary(lm(eodata$barriers..equip. ~ eodata$Part))
+participation in sport prior does not predict (R2 = .1525, p = .08864)
+
+Instructor data.
+
+cor.test(idata$age, idata$years)
+Sanity check - age is significantly correlated with years (which I'm assuming is years of instruction, makes sense)    r = .625, p < .001
+
+Coded difficult part of teaching being equipment and tested if we could predict.
+
+summary(lm(idata$equipment.diff. ~ idata$age))
+not with age (R2 = .03, p = .1786)
+
+summary(lm(idata$equipment.diff. ~ idata$years))
+not with years experience (R2 = .02, p = .2267)
+
+summary(lm(idata$equipment.diff. ~ idata$instruct))
+Years of experience? I'm really not sure what that was but not sig (R2 = .002, p = .7227)
+
+summary(lm(idata$equipment.diff. ~ idata$area.coded))
+Area "approaching sig" (that's not really a thing, but people say it all the time)
+R2 = .09, p = .05
+predicted equipment difficult = .179 - .179 * mid +. 241 * west
+Therefore, west is more likely to have problems of equipment (p of west regression coefficient = .0404)
+
+summary(lm(idata$equipment.diff. ~ idata$type..ski.board.))
+type not sig (R2 = .08, p = .2913)
+
+
+Coded difficult part of teaching being communication and tested if we could predict.
+
+summary(lm(idata$communication. ~ idata$age))
+age not sig predictor (R2 = .03, p = .159)
+
+summary(lm(idata$communication. ~ idata$years))
+years not sig (R2 = .02, p = .3363)
+
+summary(lm(idata$communication. ~ idata$instruct))
+instruct not sig (R2 = .04, p = .121)
+
+summary(lm(idata$communication.~ idata$area.coded))
+area coded not sig (R2 = .005, p = .8662)
+
+summary(lm(idata$communication. ~ idata$type..ski.board.))
+type not sig (R2 = .10, p = .165)
+
+
+
